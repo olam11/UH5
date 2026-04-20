@@ -45,10 +45,11 @@
       text-decoration: none;
       position: relative;
       z-index: 201;
+      
     }
 
        .nav-logo-img {
-      size: 48px;
+      width: 96px;
     }
 
     /* Burger button & nav links */

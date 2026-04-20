@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nos derniers articles</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 720px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      background: #fff;
+      color: #111;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    #rss-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .article-card {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s;
+    }
+
+    .article-card:hover {
+      border-color: #aaa;
+    }
+
+    .article-card img {
+      width: 90px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+      background: #f0f0f0;
+    }
+
+    .article-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .article-date {
+      font-size: 12px;
+      color: #888;
+      margin: 0 0 6px;
+    }
+
+    .article-title {
+      font-size: 15px;
+      font-weight: 500;
+      margin: 0 0 6px;
+      line-height: 1.4;
+    }
+
+    .article-excerpt {
+      font-size: 13px;
+      color: #555;
+      margin: 0;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Nos derniers articles</h2>
+  <div id="rss-container"></div>
+
+  <script>
+    fetch('articles.json')
+      .then(function(r) { return r.json(); })
+      .then(function(articles) {
+        var container = document.getElementById('rss-container');
+
+        articles.forEach(function(article) {
+          var card = document.createElement('a');
+          card.href = article.lien;
+          card.target = '_blank';
+          card.rel = 'noopener noreferrer';
+          card.className = 'article-card';
+
+          var date = new Date(article.date).toLocaleDateString('fr-FR', {
+            year: 'numeric', month: 'long', day: 'numeric'
+          });
+
+          var imgHtml = article.image
+            ? '<img src="' + article.image + '" alt="" onerror="this.style.display=\'none\'" />'
+            : '';
+
+          card.innerHTML = imgHtml +
+            '<div class="article-info">' +
+              '<p class="article-date">' + date + '</p>' +
+              '<p class="article-title">' + article.titre + '</p>' +
+              '<p class="article-excerpt">' + article.extrait + '</p>' +
+            '</div>';
+
+          container.appendChild(card);
+        });
+      });
+  </script>
+
+</body>
+</html>

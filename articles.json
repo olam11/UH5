@@ -1,0 +1,16 @@
+[
+  {
+    "titre": "Titre de votre article",
+    "date": "2025-03-15",
+    "extrait": "Un court résumé de l'article, deux ou trois phrases pour donner envie de lire la suite.",
+    "lien": "https://substack.com/@uhcinq/p-193051073",
+    "image": "https://substackcdn.com/image/fetch/$s_!HheK!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe5993b9c-8b1a-4e17-b05f-21df26ccf632_1333x2000.jpeg"
+  },
+  {
+    "titre": "Deuxième article",
+    "date": "2025-02-28",
+    "extrait": "Un autre résumé ici.",
+    "lien": "https://uhcinq.substack.com/p/deuxieme-article",
+    "image": ""
+  }
+]
